@@ -1,6 +1,5 @@
 @extends('layouts.admin')
 @section('content')
-  @include('admin.partials.content-header')
 
   {{-- stampo box con errori relativi ai campi --}}
   @if ($errors->any())

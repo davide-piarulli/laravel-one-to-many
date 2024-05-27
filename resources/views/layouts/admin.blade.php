@@ -33,6 +33,9 @@
       </aside>
 
       <div class="content">
+        <div class="content-header">
+          @include('admin.partials.content-header')
+        </div>
         @yield('content')
       </div>
 

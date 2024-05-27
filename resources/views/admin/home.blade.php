@@ -4,10 +4,6 @@
     <!-- MAIN CONTENT -->
     <div class="main-content">
 
-      <!-- content header -->
-      @include('admin.partials.content-header')
-      <!-- /content header -->
-
       <!-- CONTENT BODY -->
       <div class="content-body">
 
