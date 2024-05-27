@@ -49,12 +49,12 @@ class ProjectController extends Controller
         // dump($request->all());
         $form_data = $request->all();
         // verifico esistenza dell'immagine
-        if (array_key_exists('image', $form_data)) {
+        if (array_key_exists('img', $form_data)) {
             // salvo img nello storage
-            $img_path = Storage::put('uploads', $form_data['image']);
+            $img_path = Storage::put('uploads', $form_data['img']);
             // ottengo il nome originale dell'img
-            $original_name = $request->file('image')->getClientOriginalName();
-            $form_data['image'] = $img_path;
+            $original_name = $request->file('img')->getClientOriginalName();
+            $form_data['img'] = $img_path;
             $form_data['img_original_name'] = $original_name;
             // dump($img_path);
         }
@@ -97,6 +97,17 @@ class ProjectController extends Controller
     {
         // dd($project);
         $form_data = $request->all();
+
+        // verifico esistenza dell'immagine
+        if (array_key_exists('img', $form_data)) {
+            // salvo img nello storage
+            $img_path = Storage::put('uploads', $form_data['img']);
+            // ottengo il nome originale dell'img
+            $original_name = $request->file('img')->getClientOriginalName();
+            $form_data['img'] = $img_path;
+            $form_data['img_original_name'] = $original_name;
+            // dump($img_path);
+        }
 
         $exist = Project::where('title', $form_data['title'])->first();
 

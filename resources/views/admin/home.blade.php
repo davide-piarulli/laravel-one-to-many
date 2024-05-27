@@ -4,17 +4,15 @@
     <!-- MAIN CONTENT -->
     <div class="main-content">
 
-      <!-- CONTENT BODY -->
-      <div class="content-body">
-
-        <div class="row  debug">
-          <h2>Qui ci potrebbero essere le statistiche</h2>
-          @include('admin.partials.content-faq')
+        <div class="row">
+          <div class="col">
+            @include('admin.partials.content-faq')
+          </div>
+          <div class="col">
+            @include('admin.partials.content-body-right')
+          </div>
         </div>
         <!-- chiusura row -->
-
-      </div>
-      <!-- /CONTENT BODY -->
 
     </div>
     <!-- /MAIN CONTENT -->

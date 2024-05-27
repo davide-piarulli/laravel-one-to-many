@@ -110,9 +110,12 @@
                 <div class="col">
                   <div class="mb-3">
                     <label for="image" class="form-label">Immagine</label>
-                    <input type="file" class="form-control @error('image') is-invalid @enderror" id="image"
-                      name="image" value="{{ old('image') }}">
-                    @error('image')
+                    <input type="file" class="form-control @error('img') is-invalid @enderror" id="thumb"
+                      name="image" value="{{ old('img') }}" onchange="showImage(event)"
+                      placeholder="immagine mancante">
+                    <img class="thumb img-thumbnail w-25 my-2" onerror="this.src='/img/noimg.jpg'" id="thumb"
+                      src="{{-- {{ asset('storage/' . $project->img) }} --}}">
+                    @error('img')
                       <small class="text-danger">
                         {{ $message }}
                       </small>
@@ -143,6 +146,7 @@
       <thead>
         <tr>
           <th scope="col">Nome Progetto</th>
+          <th scope="col">Immagine</th>
           <th scope="col">Link</th>
           <th scope="col">Tipo</th>
           <th scope="col">Descrizione</th>
@@ -158,6 +162,7 @@
               @csrf
               @method('PUT')
               <th scope="row"><input type="text" value="{{ $project->title }}" name="title"></th>
+              <td><img src="{{ asset('storage/' . $project->img) }}" alt="{{ $project->title }}"></td>
               <td><input type="text" value="{{ $project->link }}" name="link"></td>
               <td><input type="text" value="{{ $project->type->name }}" name="type"></td>
               <td><input type="text" value="{{ $project->description }}" name="description"></td>
@@ -186,7 +191,6 @@
     </table>
     <div class="paginator">
       {{ $projects->links() }}
-
     </div>
 
   </div>
@@ -194,6 +198,11 @@
     function submitForm(id) {
       const form = document.getElementById(`form-edit-${id}`);
       form.submit();
+    }
+
+    function showImage(event) {
+      const thumb = document.getElementById('thumb');
+      thumb.src = URL.createObjectURL(event.target.files[0]);
     }
   </script>
 @endsection
