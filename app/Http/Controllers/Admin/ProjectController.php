@@ -17,7 +17,14 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::orderBY('id', 'desc')->paginate(10);
+        // con l'IF faccio la ricerca del progetto, altrimenti restituisco tutti i progetti.
+        if (isset($_GET['toSearch'])) {
+            $projects = Project::where('title', 'LIKE', '%' . $_GET['toSearch'] . '%')->paginate(15);
+        } else {
+
+            $projects = Project::orderByDesc('id')->paginate(10);
+        }
+
         return view('admin.projects.index', compact('projects'));
     }
 

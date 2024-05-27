@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('title', 100);
             $table->string('slug', 100);
             $table->text('link');
-            $table->string('type', 100);
+            // $table->string('type', 100);
             $table->string('img', 500)->nullable();
             $table->string('img_original_name', 100)->nullable();
             $table->text('description')->nullable();

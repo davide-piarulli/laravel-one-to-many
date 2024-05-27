@@ -28,8 +28,113 @@
 
   <!-- card prossimi progetti -->
   <div class="card my-4 mx-2">
-    <div class="card-header">
-      <h2>Progetti</h2>
+    <div class="card-header d-flex">
+      <div class="col align-content-center h-100 py-3">
+        <h2>Progetti</h2>
+      </div>
+      <div class="input-group w-25">
+        <form action="{{ route('admin.projects.index') }}" method="GET" role="search">
+          <input type="search" name="toSearch" class="form-control" placeholder="Cerca progetto...">
+        </form>
+        <span class="input-group-text">Cerca</span>
+      </div>
+      <div class="col d-flex align-content-center justify-content-center h-100 py-3">
+        <p>Nuovo Progetto</p>
+        <button class="dp-btn btn-primary" type="button" data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
+          <i class="fa-solid fa-plus"></i>
+        </button>
+
+        <!-- offcanvas -->
+        <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
+          aria-labelledby="offcanvasWithBothOptionsLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Inserisci un nuovo progetto</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+
+
+
+            <form action="{{ route('admin.projects.store') }}" method="POST" enctype="multipart/form-data">
+              @csrf
+              <div class="row">
+                <div class="col">
+                  <div class="mb-3">
+                    <label for="title" class="form-label">Titolo Progetto (*)</label>
+                    <input type="text" class="form-control @error('title') is-invalid @enderror" id="title"
+                      name="title" value="{{ old('title') }}">
+                    @error('title')
+                      <small class="text-danger">
+                        {{ $message }}
+                      </small>
+                    @enderror
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col">
+                  <div class="mb-3">
+                    <label for="link" class="form-label">Link (*)</label>
+                    <input type="text" class="form-control @error('link') is-invalid @enderror" id="link"
+                      name="link" value="{{ old('link') }}">
+                    @error('link')
+                      <small class="text-danger">
+                        {{ $message }}
+                      </small>
+                    @enderror
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col">
+                  <div class="mb-3">
+                    <label for="type" class="form-label">Tipo (*)</label>
+                    <input type="text" class="form-control @error('type') is-invalid @enderror" id="type"
+                      name="type" value="{{ old('type') }}">
+                    @error('type')
+                      <small class="text-danger">
+                        {{ $message }}
+                      </small>
+                    @enderror
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col">
+                  <div class="mb-3">
+                    <label for="image" class="form-label">Immagine</label>
+                    <input type="file" class="form-control @error('image') is-invalid @enderror" id="image"
+                      name="image" value="{{ old('image') }}">
+                    @error('image')
+                      <small class="text-danger">
+                        {{ $message }}
+                      </small>
+                    @enderror
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col">
+                  <div class="mb-3">
+                    <label for="description" class="form-label">Descrizione</label>
+                    <textarea class="form-control" name="description" id="description" cols="30" rows="5" value="">{{ old('description') }}</textarea>
+                  </div>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary">Aggiungi</button>
+              <button type="reset" class="btn btn-warning">Svuota</button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+
     </div>
     <table class="table">
       <thead>
@@ -51,7 +156,7 @@
               @method('PUT')
               <th scope="row"><input type="text" value="{{ $project->title }}" name="title"></th>
               <td><input type="text" value="{{ $project->link }}" name="link"></td>
-              <td><input type="text" value="{{ $project->type }}" name="type"></td>
+              <td><input type="text" value="{{ $project->type->name }}" name="type"></td>
               <td><input type="text" value="{{ $project->description }}" name="description"></td>
             </form>
 

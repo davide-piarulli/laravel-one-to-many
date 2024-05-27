@@ -14,7 +14,7 @@
     </button>
 
     <!-- offcanvas -->
-    <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
+    {{-- <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
       aria-labelledby="offcanvasWithBothOptionsLabel">
       <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Inserisci un nuovo progetto</h5>
@@ -99,7 +99,7 @@
           <button type="reset" class="btn btn-warning">Svuota</button>
         </form>
       </div>
-    </div>
+    </div> --}}
 
   </div>
 </div>

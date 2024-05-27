@@ -1,8 +1,5 @@
 @extends('layouts.admin')
 @section('content')
-  <div>
-    <a class="btn btn-success m-3" href="{{ route('admin.types.create') }}">Aggiungi tipo</a>
-  </div>
 
   {{-- stampo box con errori relativi ai campi --}}
   @if ($errors->any())
@@ -32,7 +29,18 @@
   <!-- card prossimi progetti -->
   <div class="card my-4 mx-2">
     <div class="card-header">
-      <h2>Tipi</h2>
+      <div class="row">
+        <div class="col">
+          <h2>Tipi</h2>
+        </div>
+        <div class="col">
+          <div>
+            <a class="btn btn-success m-3" href="{{ route('admin.types.create') }}">Aggiungi tipo</a>
+          </div>
+        </div>
+      </div>
+
+
     </div>
     <table class="table">
       <thead>
