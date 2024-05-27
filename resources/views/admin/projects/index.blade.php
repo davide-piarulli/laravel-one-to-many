@@ -32,12 +32,12 @@
       <div class="col align-content-center h-100 py-3">
         <h2>Progetti</h2>
       </div>
-      <div class="input-group w-25">
-        <form action="{{ route('admin.projects.index') }}" method="GET" role="search">
+      <form action="{{ route('admin.projects.index') }}" method="GET" role="search">
+        <div class="input-group w-100">
           <input type="search" name="toSearch" class="form-control" placeholder="Cerca progetto...">
+          <button type="submit" class="input-group-text">Cerca</button>
+        </div>
         </form>
-        <span class="input-group-text">Cerca</span>
-      </div>
       <div class="col d-flex align-content-center justify-content-center h-100 py-3">
         <p>Nuovo Progetto</p>
         <button class="dp-btn btn-primary" type="button" data-bs-toggle="offcanvas"
