@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProjectRequest;
 use App\Models\Project;
+use App\Models\Type;
 use App\Functions\Helper;
 use Illuminate\Http\Request;
 
@@ -24,8 +25,10 @@ class ProjectController extends Controller
 
             $projects = Project::orderByDesc('id')->paginate(10);
         }
+        $types = Type::all();
 
-        return view('admin.projects.index', compact('projects'));
+
+        return view('admin.projects.index', compact('projects', 'types'));
     }
 
     /**
@@ -33,6 +36,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
+
         return view('projects.store');
     }
 

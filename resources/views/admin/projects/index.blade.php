@@ -37,7 +37,7 @@
           <input type="search" name="toSearch" class="form-control" placeholder="Cerca progetto...">
           <button type="submit" class="input-group-text">Cerca</button>
         </div>
-        </form>
+      </form>
       <div class="col d-flex align-content-center justify-content-center h-100 py-3">
         <p>Nuovo Progetto</p>
         <button class="dp-btn btn-primary" type="button" data-bs-toggle="offcanvas"
@@ -91,14 +91,17 @@
               <div class="row">
                 <div class="col">
                   <div class="mb-3">
-                    <label for="type" class="form-label">Tipo (*)</label>
-                    <input type="text" class="form-control @error('type') is-invalid @enderror" id="type"
-                      name="type" value="{{ old('type') }}">
-                    @error('type')
-                      <small class="text-danger">
-                        {{ $message }}
-                      </small>
-                    @enderror
+
+                    <label for="type" class="form-label">Tipo</label>
+                    <select name="type_id" class="form-select w-25" aria-label="Default select example">
+
+                      <option value="">Seleziona un tipo</option>
+                      @foreach ($types as $type)
+                        <option value="{{ $type->id }}" @if (old('type_id') == $type->id) selected @endif>
+                          {{ $type->name }}
+                        </option>
+                      @endforeach
+                    </select>
                   </div>
                 </div>
               </div>

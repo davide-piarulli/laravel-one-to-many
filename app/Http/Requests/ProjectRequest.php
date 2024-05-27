@@ -24,7 +24,6 @@ class ProjectRequest extends FormRequest
         return [
             'title' => 'required|min:3|max:100',
             'link' => 'required|min:3|max:100',
-            'type' => 'required|min:3|max:100',
         ];
     }
     public function messages()
@@ -36,9 +35,6 @@ class ProjectRequest extends FormRequest
             'link.required' => 'Il link è obbligatorio',
             'link.min' => 'Il link deve contenere minimo :min caratteri',
             'link.max' => 'Il link deve contenere massimo :max caratteri',
-            'type.required' => 'Il tipo è obbligatorio',
-            'type.min' => 'Il tipo deve contenere minimo :min caratteri',
-            'type.max' => 'Il tipo deve contenere massimo :max caratteri',
         ];
     }
 }

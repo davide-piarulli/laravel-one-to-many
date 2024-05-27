@@ -11,22 +11,22 @@
  .content-header{
     height: 100px;
     background-color: #1b72e8;
-    .dp-btn{
-        border: 1px solid white;
-        background-color: #1b72e8;
-        color: white;
-        height: 35px;
-        width: 35px;
-        padding: 5px;
-        margin-left: 15px;
-        border-radius: 5px;
-        &:hover{
-            background-color: #023986;
-        }
-      }
-      .offcanvas {
-        width: 800px;
-      }
+}
+.dp-btn{
+    border: 1px solid white;
+    background-color: #1b72e8;
+    color: white;
+    height: 35px;
+    width: 35px;
+    padding: 5px;
+    margin-left: 15px;
+    border-radius: 5px;
+    &:hover{
+        background-color: #023986;
+    }
+  }
+.offcanvas {
+    width: 800px;
   }
 
 
